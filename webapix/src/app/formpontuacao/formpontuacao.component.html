@@ -1,0 +1,35 @@
+
+<h1 class="jumbotron jumbotron-fluid">MARCADOR DE PONTUAÇÃO<br><img src="../../assets/placar.jpg" height="250" width="260"/></h1>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <td>Nome</td>
+      <td>Vitórias</td>
+      <td>Partidas</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let player of players">
+      <td>{{player.nome}}</td>
+      <td>{{player.qtdVitorias}}</td>
+      <td>{{player.qtdPartidas}}</td>
+      <td><a href="#"  (click)=addVitoria(player.nome,player.qtdVitorias,player.qtdPartidas,player.id)>Adicionar Partida</a></td>
+      <td><a href="#"  (click)=addPartida(player.nome,player.qtdVitorias,player.qtdPartidas,player.id)>Adicionar Vitórias</a></td>
+      <td><button type="button" class="btn btn-info" (click) = deletar(player.id) >Excluir Jogador</button></td>
+    </tr>
+  </tbody>
+</table>
+
+<br><br>
+<hr class="alert alert-info">
+<br><br>
+<form >
+    <label for="nome">Nome</label>
+    <input #nome type="text" class="form form-control" name="nome"/>
+    <label for="vitorias">Vitórias</label>
+<input #vic type="number" class="form form-control" name="qtdVitorias" min=0 max=1000 />
+
+<label for="partidas">Partidas</label>
+<input type="number" class="form form-control" name="qtdPartidas" #partida min=0 max=1000 />
+<br><input  type="click"  class="btn btn-success" value="Salvar" (click)= salvar(nome.value,vic.value,partida.value) />
+</form>
